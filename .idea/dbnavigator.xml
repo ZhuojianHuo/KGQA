@@ -24,11 +24,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="c011aa68-4661-493f-a4e4-a3106dfaa2bc">
-        <schema name="sjjc" object-types="constraint, index, view, column, dataset trigger, function, table, procedure" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c011aa68-4661-493f-a4e4-a3106dfaa2bc">

@@ -13,13 +13,14 @@ public abstract class BaseEntity {
 
     //Neo4j会分配的ID（节点唯一标识 当前类中有效)
     @Id
-    private int id;
+    private Long id;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
 }

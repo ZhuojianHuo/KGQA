@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @NodeEntity
 public class Company extends BaseEntity{
 
-    private int cid;
+    private Long cid;
     private String lables;
     private String industryName;
     private String symbol;
@@ -14,12 +14,18 @@ public class Company extends BaseEntity{
     private String businessScope;
     private String officeAddress;
     private String establishDate;
+    private String registerAddress;
+    private String registerCaptial;
+    private String sigChange;
+    private String name;
+    private String shortName;
 
-    public int getCid() {
+
+    public Long getCid() {
         return cid;
     }
 
-    public void setCid(int cid) {
+    public void setCid(Long cid) {
         this.cid = cid;
     }
 
@@ -127,10 +133,6 @@ public class Company extends BaseEntity{
         this.shortName = shortName;
     }
 
-    private String registerAddress;
-    private String registerCaptial;
-    private String sigChange;
-    private String name;
-    private String shortName;
+
 
 }
