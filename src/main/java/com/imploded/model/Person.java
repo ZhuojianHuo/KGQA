@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @NodeEntity
 public class Person extends BaseEntity{
 
-    private int pid;
+    private Long pid;
     private String lables;
     private String resume;
     private String profession;
@@ -24,11 +24,12 @@ public class Person extends BaseEntity{
     private String personID;
     private int age;
 
-    public int getPid() {
+
+    public Long getPid() {
         return pid;
     }
 
-    public void setPid(int pid) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
 

@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="c011aa68-4661-493f-a4e4-a3106dfaa2bc">
-        <schema name="sjjc" object-types="view, table" />
+        <schema name="sjjc" object-types="constraint, index, view, column, dataset trigger, function, table, procedure" />
       </connection>
     </loaded-nodes>
   </component>

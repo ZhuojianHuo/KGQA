@@ -11,9 +11,11 @@
     </parent>
 
 
-    <groupId>org.example</groupId>
+    <groupId>com.imploded</groupId>
     <artifactId>KGQA</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <description>SpringBoot集成Neo4j,结合Spark朴素贝叶斯分类器实现金融领域的简易智能问答</description>
 
 
     <properties>
@@ -30,6 +32,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
+<!--        </dependency>-->
 
         <!-- 添加热部署 devtools：监听文件变动 -->
         <!-- 当Java文件改动时，Spring-boo会快速重新启动 -->
@@ -107,5 +114,33 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.html</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- Compile -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
