@@ -34,7 +34,6 @@ public class QuestionServiceImpl implements QuestionService {
         List<String> reStrings = queryProcess.analysis(question);
         Integer modelIndex = Integer.valueOf(reStrings.get(0));
         String answer =null;
-        String name;
 
         switch(modelIndex){
             case 0:
@@ -45,6 +44,18 @@ public class QuestionServiceImpl implements QuestionService {
                 break;
             case 2:
                 answer = getCompanyIndustryName(reStrings);
+                break;
+            case 3:
+                answer = getCompanyShareholderName(reStrings);
+                break;
+            case 4:
+                answer = getShareholderResume(reStrings);
+                break;
+            case 5:
+                answer = getCompanyEstablishDate(reStrings);
+                break;
+            case 6:
+                answer = getCompanyWebsite(reStrings);
                 break;
             default:
                 break;
@@ -57,7 +68,7 @@ public class QuestionServiceImpl implements QuestionService {
         }
     }
 
-    public String getCompanyOfficeAddress(List<String> reStrings){
+    private String getCompanyOfficeAddress(List<String> reStrings){
         String name;
         String answer;
         name = reStrings.get(1);
@@ -70,7 +81,7 @@ public class QuestionServiceImpl implements QuestionService {
         return answer;
     }
 
-    public String getCompanyBusinessScope(List<String> reStrings){
+    private String getCompanyBusinessScope(List<String> reStrings){
         String name;
         String answer;
         name = reStrings.get(1);
@@ -83,13 +94,68 @@ public class QuestionServiceImpl implements QuestionService {
         return answer;
     }
 
-    public String getCompanyIndustryName(List<String> reStrings){
+    private String getCompanyIndustryName(List<String> reStrings){
         String name;
         String answer;
         name = reStrings.get(1);
         String industryName = questionRepository.getCompanyIndustryName(name);
         if (industryName != null) {
             answer = industryName;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanyShareholderName(List<String> reStrings){
+        String name,ctb;
+        String answer;
+        name = reStrings.get(1);
+        ctb = reStrings.get(2);
+        List<String> shareholderName = questionRepository.getCompanyShareholderName(name,ctb);
+
+        if (shareholderName.size() == 0) {
+            answer = null;
+        } else {
+            answer = shareholderName.toString().replace("[", "").replace("]", "");
+        }
+        return answer;
+    }
+
+    private String getShareholderResume(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        List<String> resume = questionRepository.getShareholderResume(name);
+
+        if (resume.size() == 0) {
+            answer = null;
+        } else {
+            answer = resume.toString().replace("[", "").replace("]", "");
+        }
+        return answer;
+    }
+
+    private String getCompanyEstablishDate(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String establishDate = questionRepository.getCompanyEstablishDate(name);
+        if (establishDate != null) {
+            answer = establishDate;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanyWebsite(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String website = questionRepository.getCompanyWebsite(name);
+        if (website != null) {
+            answer = website;
         } else {
             answer = null;
         }

@@ -104,8 +104,7 @@ public class CoreProcessor {
         List<Term> terms = segment.seg(querySentence);
         String abstractQuery = "";
         abstractMap = new HashMap<>();
-        // nr 人名词性这个 词语出现的频率
-        int nrCount = 0;
+
         for (Term term : terms) {
             String word = term.word;
             String termStr = term.toString();
@@ -118,9 +117,13 @@ public class CoreProcessor {
             }
             // Person name
             else if(termStr.contains("nr")){
-                abstractQuery += "nnt ";
-                abstractMap.put("nnt", word);
-                nrCount++;
+                abstractQuery += "nr ";
+                abstractMap.put("nr", word);
+            }
+            // Company position
+            else if(termStr.contains("np")){
+                abstractQuery += "np ";
+                abstractMap.put("np", word);
             }
             else {
                 abstractQuery += word + " ";

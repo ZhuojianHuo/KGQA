@@ -17,8 +17,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/rest/imploded/company")
 public class CompanyController {
+
     @Autowired
-    CompanyRepository companyRepository;
+    private CompanyRepository companyRepository;
 
     /**
      * 根据公司查询公司实体

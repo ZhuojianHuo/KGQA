@@ -17,6 +17,9 @@ public class ConfigRunner implements CommandLineRunner {
     private String companyDictPath;
 
 
+    @Value("${HanLP.CustomDictionary.path.positionDict}")
+    private String positionDictPath;
+
     @Value("${HanLP.CustomDictionary.cache.path}")
     private String cacheDictPath;
 
@@ -32,6 +35,9 @@ public class ConfigRunner implements CommandLineRunner {
 
         /**加载自定义的【公司】字典 == 设置词性 nc 0*/
         loadDict(companyDictPath,0);
+
+        /**加载自定义的【职位】字典 == 设置词性 np 0*/
+        loadDict(positionDictPath,1);
 
 
     }
@@ -68,6 +74,10 @@ public class ConfigRunner implements CommandLineRunner {
                     /**设置公司名词词性 == nc 0*/
                     case 0:
                         CustomDictWordUtils.setNatureAndFrequency(word,"nc 0",true);
+                        break;
+                    /**设置公司职位词性 == np 0*/
+                    case 1:
+                        CustomDictWordUtils.setNatureAndFrequency(word,"np 0",true);
                         break;
                     default:
                         break;
