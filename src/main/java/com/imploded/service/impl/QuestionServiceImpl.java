@@ -57,6 +57,18 @@ public class QuestionServiceImpl implements QuestionService {
             case 6:
                 answer = getCompanyWebsite(reStrings);
                 break;
+            case 7:
+                answer = getCompanyStockPrice(reStrings);
+                break;
+            case 8:
+                answer = getCompanyStockName(reStrings);
+                break;
+            case 9:
+                answer = getCompanyStockVol(reStrings);
+                break;
+            case 10:
+                answer = getCompanySymbol(reStrings);
+                break;
             default:
                 break;
         }
@@ -156,6 +168,61 @@ public class QuestionServiceImpl implements QuestionService {
         String website = questionRepository.getCompanyWebsite(name);
         if (website != null) {
             answer = website;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanyStockName(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String symbol = questionRepository.getCompanySymbol(name);
+        String stockName = questionRepository.getCompanyStockName(symbol);
+        if (stockName != null) {
+            answer = stockName;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanyStockPrice(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String symbol = questionRepository.getCompanySymbol(name);
+        String price = questionRepository.getCompanyStockPrice(symbol);
+        if (price != null) {
+            answer = price;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanyStockVol(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String symbol = questionRepository.getCompanySymbol(name);
+        String vol = questionRepository.getCompanyStockVol(symbol);
+        if (vol != null) {
+            answer = vol ;
+        } else {
+            answer = null;
+        }
+        return answer;
+    }
+
+    private String getCompanySymbol(List<String> reStrings){
+        String name;
+        String answer;
+        name = reStrings.get(1);
+        String symbol = questionRepository.getCompanySymbol(name);
+        if (symbol != null) {
+            answer = symbol;
         } else {
             answer = null;
         }

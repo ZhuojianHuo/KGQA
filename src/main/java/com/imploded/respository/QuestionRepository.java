@@ -80,11 +80,40 @@ public interface QuestionRepository extends Neo4jRepository<Company,Long> {
     @Query("match(n:Corporation) where n.name=$name return n.website")
     String getCompanyWebsite(@Param("name") String name);
 
+
     /**
      * 7 对应问题模板7 == nc(公司) 公司股票价格
-     * @param name 公司名
+     * @param symbol 股票代码
      * @return 返回公司股票价格
      */
 
+    @Query("match(n:Market) where n.symbol=$symbol return n.price")
+    String getCompanyStockPrice(@Param("symbol") String symbol);
+
+    /**
+     * 8 对应问题模板8 == nc(公司) 公司股票名
+     * @param symbol 公司股票代码
+     * @return 返回公司股票名
+     */
+    @Query("match(n:Market) where n.symbol=$symbol return n.name")
+    String getCompanyStockName(@Param("symbol") String symbol);
+
+    /**
+     * 9 对应问题模板9 == nc(公司) 公司股票成交量
+     * @param symbol 公司名
+     * @return 返回公司股票当前成交量
+     */
+    @Query("match(n:Market) where n.symbol=$symbol return n.vol")
+    String getCompanyStockVol(@Param("symbol") String symbol);
+
+
+    /**
+     *  10 对应问题模板10 == nc(公司) 公司股票代码
+     * @param name 公司名
+     * @return 返回公司股票代码
+     */
+
+    @Query("match(n:Corporation) where n.name=$name return n.symbol")
+    String getCompanySymbol(@Param("name") String name);
 
 }

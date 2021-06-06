@@ -14,7 +14,7 @@ public interface CompanyRepository extends Neo4jRepository<Company,Long> {
 
     List<Company> findByName(@Param("name") String name);
 
-    @Query("match(n:Person)-[:actedin]->(m:Corporation) where n.name='孙俊英' return m.name")
+    @Query("match(m:Corporation)-[r]-(n:Person) where n.name='孙俊英' return m.name")
     List<String> getCompanyName();
 
 }
